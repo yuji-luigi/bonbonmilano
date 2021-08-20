@@ -21,7 +21,7 @@ if(btnSubmit){console.log('btnsubmit exists')
     const productId = document.querySelector('.product-id').value
     const inputValues = getInputValues(INPUTELEMENTS)
     const fetchUrl = btnSubmit.dataset.url
-    const data = await fetchReq(`http://localhost:3000/${fetchUrl}`, "POST", inputValues)
+    const data = await fetchReq(`/${fetchUrl}`, "POST", inputValues)
     console.log(data)
     window.open(`/cart/register/${productId}`, '_self')
     e.target.disabled = false

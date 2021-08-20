@@ -1,0 +1,66 @@
+.btn-grey{
+  font-size: .8rem;
+  height: 30px;
+  padding: 0px;
+}
+.form-input-group{
+  display: inline;
+  /* justify-content: center; */
+}
+
+.modify-and-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+}
+.modify-and-info > .modify-form{
+  width: 50%;
+}
+
+.modify-form > div{
+  display: flex;
+  margin-bottom: 10px;
+}
+.form-input-group > form {
+  width: 100%;
+}
+
+.modify-form > input {
+  width: 50%;
+}
+
+.modify-form > label {
+  width: 25%;
+  text-align: right;
+}
+.modify-form > button {
+  width: 25%;
+}
+.form-input-group > form > button {
+  width: 25%;
+  text-align: right;
+}
+
+label {
+  padding: 0 5px;
+  vertical-align: middle;
+}
+input {
+  padding: 5px;
+  vertical-align: middle;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table{
+  background-color: blanchedalmond;
+  border-collapse: collapse;
+
+}
+
+.text-right {
+  text-align: right;
+}

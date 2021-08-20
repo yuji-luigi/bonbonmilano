@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bombommilano</title>
+    <link rel="stylesheet" href="/css/product.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+
+  <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+  <div class="container">
+    <%- include('../includes/_status_nav') %>
+    <h1 class="main-headding">Registration</h1>
+        <form action="/auth/guest/register" method="POST">
+     <%- include('../includes/_user_register') %> 
+        </form>
+    
+  </div>
+</section>
+    <%- include('../includes/_footer_nav') %> 
+    <script src="/script/auth.js"></script>
+  </body>
+</html>

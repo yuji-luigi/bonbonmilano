@@ -1,0 +1,125 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/css/bombon.css">
+   <link rel="stylesheet" href="/css/account_modify.css">
+   <title>Document</title>
+ </head>
+ <body>
+  <%- include('../includes/_header_nav') %> 
+  <section class="main-section">
+    <div class="container">
+  <%- include('../includes/_status_nav') %>
+
+  <fieldset> 
+    <legend>
+      <h3>Data del mittente</h3>
+      <h2 class="message"></h2>
+    </legend>
+      <div  class="modify-and-info">
+        <div class="modify-form">
+          <div class="form-input-group">
+          <form action="/auth/user_account/modify" method="POST">
+            <label for="username">Nome</label>
+            <input class="username" type="text" autofocus name="username" required>
+            <button class="btn btn-grey" type="submit">Modify</button>
+            <div class="form__input-error-message"></div>
+          </form>
+          </div>
+  
+          <div class="form-input-group">
+          <form action="/auth/user_account/modify" method="POST">
+            <label for="email">EMAIL</label><input class="email" type="text" name="email" required>
+            <button class="btn btn-grey" type="submit">Modify</button>
+            <div class="form-input-error-message"></div>
+          </form>
+          </div>
+  
+          <div class="form-input-group">
+          <form action="/auth/user_account/modify" method="POST">
+            <label for="password">password</label><input type="password" class="password" type="text" name="password" required>
+            <button class="btn btn-grey" type="submit">Modify</button>
+            <div class="form__input-error-message"></div>
+          </form>
+          </div>   
+  
+          <div class="form-input-group">
+          <form action="/auth/user_account/modify" method="POST">
+            <label>Via</label><input  class="user-data" type="text" name="via" required>
+            <button class="btn btn-grey" type="submit">Modify</button>
+            <div class="form__input-error-message"></div>
+          </form>
+          </div>
+  
+          <div class="form-input-group">
+          <form action="/auth/user_account/modify" method="POST">
+            <label>Cita*</label><input class="user-data" type="text" name="citta" required>
+            <button class="btn btn-grey" type="submit">Modify</button>
+            <div class="form__input-error-message"></div>
+          </form>
+          </div>
+  
+          <div class="form-input-group"> 
+          <form action="/auth/user_account/modify" method="POST">
+              <label>Tel*</label><input type="tel" class="user-data  input-number" type="text" name="tel" required>
+              <button class="btn btn-grey" type="submit">Modify</button>
+              <div class="form__input-error-message"></div>
+            </form>
+          </div>
+  
+          <div class="form-input-group">
+          <form action="/auth/user_account/modify" method="POST">
+              <label>CAP</label><input class="user-data input-number" type="text" name="cap" required>
+              <button class="btn btn-grey" type="submit">Modify</button>
+              <div class="form__input-error-message"></div>
+            </form>
+          </div>
+  
+        </div>
+        <div class="info-wrapper">
+          <table>
+            <th>your account infomation</th>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td><%= user.username %> </td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td><%= user.email %> </td>
+              </tr>
+              <tr>
+               <td>Password</td>
+                <td>*** </td>
+              </tr>
+              <tr>
+               <td>Via</td>
+                <td><%= user.via %> </td>
+              </tr>
+              <tr>
+               <td>Citta</td>
+                <td><%= user.citta %> </td>
+              </tr>
+              <tr>
+               <td>Tel</td>
+                <td><%= user.tel %> </td>
+              </tr>
+              <tr>
+               <td>Cap</td>
+                <td><%= user.cap %> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+       </div>
+      </fieldset>
+    </div>
+    </section>
+    <%- include('../includes/_footer_nav') %> 
+
+ </body>
+ </html>
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>info HTML</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+  <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+  <div class="container">
+    <%- include('../includes/_status_nav') %>    
+    <div class="carousel-description-container">
+      <div class="left">
+      <h2 class="sub-headding">YOUR CHOISE</h2>
+             <h3><%= product.varititle %> </h3>
+      <div class="carousel-container">
+        <span class='prev-btn'>&lt;</span> 
+        <span class="next-btn">&gt;</span>  
+        <div class="carousel-slide">
+          <img class="last-image" src="<%= product.detailimgurl[product.detailimgurl.length - 1] %> " alt="">  
+          <% product.detailimgurl.forEach(imgurl => { %> 
+            <img src="<%= imgurl %> " alt="">
+            <% }) %> 
+            <img class="first-image" src="<%= product.detailimgurl[0] %> " alt=""> 
+          </div> 
+          <div class="slide-preview"></div>
+      </div>
+      <h3>Informazioni</h3>
+            <table class="table-contents">
+              <tr>
+                <td class="first-column">Prezzo:</td>
+                <td class="second-column"> $ <%= product.price /100 %>  </td>
+              </tr>
+              <tr>
+                <td class="first-column">Descrizioni:</td>
+                <td class="second-column"> <%= product.description %></td>
+              </tr>
+            </table> 
+    </div>
+    <div class="right">
+      <h2 class="sub-headding">YOUR CHOISE</h2>
+      <h3><%= product.varititle %> </h3>
+      <div class="window">
+          <div class="cart-items confirmation-table">
+            <div class="desc-info">
+              
+              <table class="table-contents">
+                <tbody >  
+                  <tr>
+                    <td>via</td>
+                    <td><%= info.party_details.via %> </td>  
+                  </tr>
+                  <tr>
+                    <td>citta</td>
+                    <td><%= info.party_details.citta %> </td>  
+                  </tr>
+                  <tr>
+                    <td>cap</td>
+                    <td><%= info.party_details.cap %> </td>  
+                  </tr>
+                </tbody>
+              </table>
+              <h4>Nome della persona a cui regalare</h1>
+                <table class="table-contents">
+                  <tbody>
+                    <tr>
+                      <td>nome</td>
+                      <td><%= info.party_details.name_person %> </td>  
+                    </tr>
+                    <tr>
+                      <td>sesso</td>
+                      <td><%= info.party_details.chekckbox %> </td>  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          <a class="btn btn-grey" href="/cart/product/modify/<%= info.product_id %> ">Modifica</a>
+        </div>                
+      </div>
+    </div>
+    </div>
+</section>
+    <%- include('../includes/_footer_nav') %> 
+    <script src="/script/carousel.js"></script>
+    <script src="/script/cart.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/bombon.css">
+  <link rel="stylesheet" href="/css/account_modify.css">
+  <title>Document</title>
+</head>
+<body>
+ <%- include('../includes/_header_nav') %> 
+ <section class="main-section">
+   <div class="container">
+ <%- include('../includes/_status_nav') %>
+
+ <fieldset> 
+   <legend>
+     <h3>form</h3>
+     <h2 class="message"></h2>
+   </legend>
+     <div  class="modify-and-info">
+       <div class="modify-form">
+         <div class="form-input-group">
+         
+          <form action="/cart/product/modify/<%= product._id %> " method="POST">
+           <label for="name">nome del ristorante</label>
+           <input class="username" type="text" autofocus name="name" required>
+           <button class="btn btn-grey" type="submit">Modify</button>
+           <div class="form__input-error-message"></div>
+         </form>
+         </div>
+ 
+         <div class="form-input-group">
+         <form action="/cart/product/modify/<%= product._id %> " method="POST">
+           <label for="via">Via</label><input class="email" type="text" name="via" required>
+           <button class="btn btn-grey" type="submit">Modify</button>
+           <div class="form-input-error-message"></div>
+         </form>
+         </div>
+         <div class="form-input-group">
+         <form action="/cart/product/modify/<%= product._id %> " method="POST">
+           <label for="email">Citta</label><input class="citta" type="text" name="citta" required>
+           <button class="btn btn-grey" type="submit">Modify</button>
+           <div class="form-input-error-message"></div>
+         </form>
+         </div>
+ 
+         <div class="form-input-group">
+         <form action="/cart/product/modify/<%= product._id %> " method="POST">
+           <label for="cap">Cap</label><input type="password" class="password" type="text" name="cap" required>
+           <button class="btn btn-grey" type="submit">Modify</button>
+           <div class="form__input-error-message"></div>
+         </form>
+         </div>   
+ 
+         <div class="form-input-group">
+         <form action="/cart/product/modify/<%= product._id %> " method="POST">
+           <label>Nome della persona da celebrare</label><input  class="user-data" type="text" name="name_person" required>
+           <button class="btn btn-grey" type="submit">Modify</button>
+           <div class="form__input-error-message"></div>
+         </form>
+         </div>
+ 
+         <div class="form-input-group">
+         <form action="/cart/product/modify/<%= product._id %> " method="POST">
+           <label>Gender</label><input class="user-data" type="text" name="gender" required>
+           <button class="btn btn-grey" type="submit">Modify</button>
+           <div class="form__input-error-message"></div>
+         </form>
+         </div>
+ 
+    
+ 
+       </div>
+       <div class="info-wrapper">
+         <table>
+           <th>your account infomation</th>
+           <tbody>
+            <tr>
+              <td>via</td>
+              <td><%= info.party_details.via %> </td>  
+            </tr>
+            <tr>
+              <td>citta</td>
+              <td><%= info.party_details.citta %> </td>  
+            </tr>
+            <tr>
+              <td>cap</td>
+              <td><%= info.party_details.cap %> </td>  
+            </tr>
+          </tbody>
+        </table>
+        <h4>Nome della persona a cui regalare</h1>
+          <table class="table-contents">
+            <tbody>
+              <tr>
+                <td>nome</td>
+                <td><%= info.party_details.name_person %> </td>  
+              </tr>
+              <tr>
+                <td>sesso</td>
+                <td><%= info.party_details.chekckbox %> </td>  
+              </tr>
+           </tbody>
+         </table>
+       </div>
+      </div>
+     </fieldset>
+   </div>
+   </section>
+   <%- include('../includes/_footer_nav') %> 
+
+</body>
+</html>
+

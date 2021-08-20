@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PRODUCT HTML</title>
+    <link rel="stylesheet" href="/css/product.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+
+  <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+  <div class="container">
+    <%- include('../includes/_status_nav') %>
+        <h1 class="main-headding">PRODUCT PURCHASE PAGE</h1>
+        
+    
+        <h2 class="sub-headding">YOUR CHOISE</h2>
+               <h3><%= product.varititle %> </h3>
+      <div class="carousel-description-container">
+        <div class="slide-preview"></div>
+        
+        <div class="carousel-container">
+          
+          
+          <span class='prev-btn'>&lt;</span> 
+          <span class="next-btn">&gt;</span>  
+          <div class="carousel-slide">
+              
+              <img class="last-image" src="<%= product.detailimgurl[product.detailimgurl.length - 1] %> " alt="">  
+              <% product.detailimgurl.forEach(imgurl => { %> 
+              <img src="<%= imgurl %> " alt="">
+              <% }) %> 
+              <img class="first-image" src="<%= product.detailimgurl[0] %> " alt=""> 
+              
+          </div>  
+            
+        </div>
+        
+          
+          <div class="desc-product">
+            <h3>Informazioni</h3>
+          <table>
+            <tr>
+              <td class="first-column">Prezzo:</td>
+              <td class="second-column"> $ <%= product.price /100 %>  </td>
+            </tr>
+            <tr>
+              <td class="first-column">Descrizioni:</td>
+              <td class="second-column"> <%= product.description %></td>
+            </tr>
+        </table>
+        </div>
+     </div>
+    </div>
+    <% if (user.guest === true) { %>
+      <h1> guest route</h1>
+        <label for="quantity">Quantity</label>
+          <input class="qty-input" type="number" min="0"  name="quantity" id="qty-input">
+          <input type="hidden" name="product_id" class="product-id" value=<%= product._id%> >
+          <input type="hidden" name="ref_title" value="<%= ref_title %>" >
+          <button type="submit" class="btn btn-submit btn-proceed" data-url="cart">Add to cart</button>
+        </div>
+    <% } else { %>
+      <h1>user route</h1>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input class="qty-input" type="number" min="0"  name="quantity" id="qty-input">
+          <input type="hidden" name="product_id" class="product-id" value=<%= product._id%> >
+          <input type="hidden" name="ref_title" value="<%= ref_title%>" >
+          <button type="submit" class="btn btn-submit btn-proceed" data-url="cart" >Add to cart</button>
+        </div>
+    <% } %>
+</section>
+    <%- include('../includes/_footer_nav') %> 
+    <script src="/script/carousel.js"></script>
+    <script src="/script/cart.js"></script>
+
+</body>
+</html>

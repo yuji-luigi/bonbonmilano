@@ -1,0 +1,17 @@
+
+
+<% if (user.guest === true) { %>
+  <div class="status-nav">
+    <h3 class="status-nav-element" >Welcome Guest!!</h3>
+    <a href="/auth/register" class="status-nav-element">register</a>
+    <a href="/auth/login" class="status-nav-element">login </a>
+    <a  href="/cart" class="status-nav-element">Cart</a>
+  </div>
+<% } else { %>
+  <div class="status-nav">
+    <h3 class="status-nav-element" >Welcome <%= user.username %> !!</h3>
+    <a href="/auth/logout" class="status-nav-element">logout </a>
+    <a  href="/cart" class="status-nav-element">Cart</a>
+    <a href="/auth/user_account " class="status-nav-element">Account</a>
+  </div>
+<% } %>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart!!</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+   <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+    <div class="container">
+      <%- include('../includes/_status_nav') %>
+      <div class="cart">
+            <h1 class="main-headding">Your Cart!!</h1>
+              <% if(!cart.items ||cart.items.length > 0){ %> 
+                <div class="cart-items">
+                  <% cart.items.forEach(item => { %>
+                    <div class="item-wrapper"> 
+                      <div class="cart-item-wrapper-left">
+                        <a href="/cart/product/<%= item.product_id %> ">
+                          <span class="cart-item-title"> <%= item.varititle %>  </span>
+                          <img class="item-image" src="<%= item.variimgurl %> " alt="300">
+                        </a>
+                      </div>
+                            <div class="cart-item-wrapper-right">
+                              <table>
+                                <tbody>  
+                                  <tr>
+                                    <td>Prezzo</td>
+                                    <td>$<%= item.price / 100 %> </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Qty Totale</td>
+                                    <td><%= item.quantity %> </td>
+                                  </tr>
+                                  <tr>
+                                    <td>sub Totale</td>
+                                    <td>$<%= item.price * item.quantity /100 %> </td>  
+                                  </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            <div class="cart-item-wrapper-remove-btn-div">
+                              <form class="d-inline" action="/cart/<%= item.product_id %>?_method=DELETE" method="POST">
+                                <button type="submit" data-id=<%= item.product_id %> class="btn-remove-cart-item btn btn-danger">remove</button>
+                              </form>
+                            </div>
+                    </div>
+                  <%}) %> 
+                  <% if(user.guest === true){ %>
+                    <a href="/auth/guest/register" class="btn btn-grey">Checkout</a>
+                    <% }else{ %>  
+                  <form action="cart/purchase" method="POST">
+                    <button type="submit" class="btn btn-grey">Checkout</button>
+                  </form>
+                  <% } %> 
+                  <h4>total <%= cart.total /100 %> </h4>
+                </div>
+              <% } else { %> 
+                <h1 class="main-headding">is Empty!!</h1>
+               <% } %> 
+          </div>
+           
+        
+    </div>
+</section>
+
+
+    <%- include('../includes/_footer_nav') %> 
+    <script src="/script/cart.js"></script>
+</body>
+</html>

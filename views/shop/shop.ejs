@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PARTECIPAZIONI!! BOMBONMILANO</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+
+    <%- include('../includes/_header_nav') %> 
+
+<section class="main-section">
+    <div class="container">
+        <%- include('../includes/_status_nav') %>
+        <h1 class="main-headding">SHOP</h1>
+    
+        <h2 class="sub-headding"></h2>
+        <div class="items next-page">
+            <% products.forEach(product => { %> 
+              <a class="anchor-tag" href="/shop/ajax/<%= product.title %>  ">
+                  <div class="item">
+                    <span class="item-title"><%= product.title %>  </span>
+                    <img class="item-image" src="<%= product.mainimgurl %> " alt="300">
+                </div>
+              </a>
+            <% }) %> 
+        </div>
+    </div>
+    
+    <div class="modal">
+
+        <div class="modal-content">
+                <div class="option-contents">
+
+                </div>
+        </div>
+
+            
+    </div>
+</section>
+
+    <%- include('../includes/_footer_nav') %> 
+
+    <script src="/script/index.js"></script>
+</body>
+</html>

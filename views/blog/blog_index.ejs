@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>BOMBONMILANO BLOG</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+    <%- include('../includes/_header_nav') %> 
+
+<section class="main-section blog-section">
+    <div class="container">
+        <%- include('../includes/_status_nav') %>
+        <h1 class="main-headding">BLOG</h1>
+    
+        <div class="blog-div">
+            <div class="blog-content">
+                <a href="blog/content">
+                   <div class="blog-date">3-22-2021</div>
+                   <div class="blog-title">my curriculum</div>
+                   <img src="/bombon_images/face3.jpg" alt="">
+                </a>
+            </div>
+
+            <div class="blog-content">
+                <a href="/blog/content">
+                   <div class="blog-date">3-22-2021</div>
+                   <div class="blog-title">my curriculum</div>
+                   <img src="/bombon_images/face3.jpg" alt="">
+                </a>
+            </div>
+        </div>
+       
+    </div>
+    <div class="blog-admin">
+        <span><a href="write_blog.html">upload</a></span>
+        
+    </div>
+
+
+    <%- include('../includes/_footer_nav') %> 
+</body>
+</html>

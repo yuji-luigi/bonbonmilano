@@ -1,0 +1,48 @@
+<div class="contents">
+
+
+  <h1 class="main-headding">Confirmation</h1>
+          <h4 class="main-headding" >indirizo e info personale</h1>
+              <div class="cart-items confirmation-table">
+                <table class="table-contents">
+                  <tbody >  
+                    <tr>
+                      <td>Nome</td>
+                      <td><%= user.username %> </td>
+                    </tr>
+                    <tr>
+                      <td>via</td>
+                      <td><%= user.via %> </td>  
+                    </tr>
+                    <tr>
+                      <td>citta</td>
+                      <td><%= user.citta %> </td>  
+                    </tr>
+                    <tr>
+                      <td>cap</td>
+                      <td><%= user.cap %> </td>  
+                    </tr>
+                    <tr>
+                      <td>tel</td>
+                      <td><%= user.tel %> </td>  
+                    </tr>
+                    <tr>
+                      <td>email</td>
+                      <td><%= user.email %> </td>  
+                    </tr>
+                  </tbody>
+                </table>
+                <form action="/auth/register/confirm/send_email" method="POST">
+                  <input type="hidden" name="username" value="<%= user.username %>">
+                  <input type="hidden" name="email" value="<%= user.email %>">
+                  <input type="hidden" name="tel" value="<%= user.tel %>">
+                  <input type="hidden" name="via" value="<%= user.via %>">
+                  <input type="hidden" name="citta" value="<%= user.citta %>">
+                  <input type="hidden" name="cap" value="<%= user.cap %>">
+                  <button type="submit" class="btn btn-grey btn-confirm">Procedi </button>
+                </form>
+                <!-- <form action="/auth/register/cancel?_method=DELETE" method="POST"> -->
+                  <input type="hidden" id="email-input" name="email" value=<%= user.email %> >
+                  <button type="submit" class="close btn btn-grey">Torna</button>
+                <!-- </form> -->
+              </div>

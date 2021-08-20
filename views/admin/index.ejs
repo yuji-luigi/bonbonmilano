@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Cart!!</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+   <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+    <div class="container">
+      <%- include('../includes/_status_nav') %>
+      <div class="cart">
+            <h1 class="main-headding">Your Cart!!</h1>
+                <div class="cart-items">
+                  <% accounts.forEach(account => { %>
+                    <div class="item-wrapper"> 
+                      <div class="cart-item-wrapper-left">
+                        <a href="/adimin/delete_account/<%= account._id %> ">
+                        </a>
+                      </div>
+                            <div class="cart-item-wrapper-right">
+                              <table>
+                                <tbody>  
+                                  <tr>
+                                    <td>Name</td>
+                                    <td><%= account.username %> </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Email</td>
+                                    <td><%= account.email%> </td>
+                                  </tr>
+                                  <tr>
+                                    <td>tel</td>
+                                    <td><%= account.tel%> </td>
+                                  </tr>
+                                  <tr>
+                                    <td>indirizzzo</td>
+                                    <td><%= account.via%>, <%= account.citta %> </td>  
+                                  </tr>
+                                </tbody>
+                                </table>
+                            </div>
+                            <div class="cart-item-wrapper-remove-btn-div">
+                                <form action="/admin/delete/<%= account._id %>?_method=DELETE" method="POST">
+                                    <button class="btn-remove-cart-item btn btn-danger">remove</button>
+                                </form>
+                        </div>
+                    </div>
+                  <%}) %>
+                </div>             
+          </div>                  
+    </div>
+</section>
+
+
+    <%- include('../includes/_footer_nav') %> 
+</body>
+</html>

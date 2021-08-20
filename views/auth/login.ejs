@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>BOMBONMILANO User Login page</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+  <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+    <div class="container">
+      <%- include('../includes/_status_nav') %>
+        <h1 class="main-headding">Login</h1>
+        <form action="/auth/login" method="POST">    
+          <fieldset>
+            <legend>
+              <h2 class="message"></h2>
+            </legend>
+           <div  class="personal-details">
+             <div>
+                <div class="form__input-group">
+                 <label for="email">EMAIL</label><input class="email" type="text" name="email" required>
+                 <div class="form__input-error-message"></div>
+                </div>
+                <div class="form__input-group">
+                  <label for="username">Password</label><input class="password" type="password" name="password" required>
+                  <div class="form__input-error-message"></div>
+                </div>
+            </div>
+          </fieldset>
+          <button class="btn-submit" data-url="auth/login" type="submit" >Submit</button>
+        </form>
+    </div>
+</section>
+<%- include('../includes/_footer_nav') %> 
+<script src="/script/auth.js">
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "items": [{
+    "title": "Partecipazioni",
+    "imgurl": "/images/bomboniere1.jpg",
+    "linkurl":"/shop"
+  },
+  {
+    "title": "Buste",
+    "imgurl": "/images/bonboniere2.jpg",
+    "linkurl":"/shop"
+  },
+  {
+    "title": "Matrimonio",
+    "imgurl": "/images/bonboniere3.jpg",
+    "linkurl":"/shop"
+  }
+]
+}

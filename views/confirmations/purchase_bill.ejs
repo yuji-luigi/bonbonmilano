@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Cart!!</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+   <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+    <div class="container">
+      <%- include('../includes/_status_nav') %>
+      <% cart.items.forEach(item=> { %> 
+
+             <img src="<%= item.img %>" width="200">  <br>
+              <%= item.product_name %> <br>
+              qty<%= item.quantity%> <br>
+             price <%= item.price / 100 %> <br>
+             sub total <%= item.price * item.quantity /100 %> <br>
+             
+             <% }) %> <br>
+             <div>
+               total <%= cart.total / 100 %>
+             </div>
+             
+            </div>
+            <form action="/cart/purchase" method="POST">
+              <button type="submit" class="btn btn-grey">Checkout</button>
+            </form>
+</section>
+
+
+    <%- include('../includes/_footer_nav') %> 
+    <script src="/script/cart.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Cart!!</title>
+    <link rel="stylesheet" href="/css/bombon.css">
+    <link rel="stylesheet" href="/css/account_modify.css">
+
+    <meta name="description" content="We create warm and cute bonbonieri for you. You can customize materials as
+    you like!!">
+</head>
+<body>
+   <%- include('../includes/_header_nav') %> 
+<section class="main-section">
+    <div class="container">
+      <%- include('../includes/_status_nav') %>
+      <div class="cart">
+            <h1 class="main-headding">account info!!</h1>
+                <table class="margin-auto">
+                  <tbody>  
+                    <tr>
+                      <td>Name</td>
+                      <td><%= user.username %> </td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td><%= user.email%> </td>
+                    </tr>
+                    <tr>
+                      <td>tel</td>
+                      <td><%= user.tel%> </td>
+                    </tr>
+                    <tr>
+                      <td>indirizzzo</td>
+                      <td><%= user.via%>, <%= user.citta %> </td>  
+                    </tr>
+                  </tbody>
+                </table>
+                <div class=" text-right">
+                    <a href="/auth/user_account/modify" class="btn btn-grey">modifica</a>
+                </div>
+              
+              
+                  <h1 class="main-headding">your order</h1>
+                  <% if (typeof orders ==='undefined') { %>
+                    <h3 class="main-headding"> you have no order</h3>
+                  <% }else{ %>
+                    <hr>
+                    <% orders.forEach(order => {%>
+                    <table class="margin-auto">
+                      <tbody> 
+                        <tr>
+                          <th>Prodotto</th>
+                          <th>Prezzo</th>
+                          <th>quauntita</th>
+                          <th>sub total</th>
+                          <th>Festa indirizzzo</th>
+                        </tr>
+                        <% order.details.forEach(detail => { %> 
+                    <tr>
+                      <td><%= detail.name %> </td>
+                      <td>$<%= detail.price %></td>
+                      <td>$<%= detail.qty%> </td>
+                      <td>$<%= detail.price * detail.qty / 100 %> </td>
+                      <td>
+                        <ul>
+                          <li><%= detail.party_details.name %></li>
+                          <li> <%= detail.party_details.citta %></li>
+                          <li><%= detail.party_details.cap %></li>
+                          <li><%= detail.party_details.name_person %></li>
+                        </ul>
+                     </td>
+                     </tr>
+                    <% }) %>  
+                  </tbody>
+                </table>
+                Total Price $ <%= order.total %> 
+                <br>
+                orderd data : <%= order.timeStamp %> 
+                <% }) %>   
+                  <% } %>
+                <hr>
+              <br>
+              
+                      </div>
+                            
+                              
+                            
+                                <form action="/admin/delete/<%= user._id %>?_method=DELETE" method="POST">
+                                    <button class="btn-remove-cart-item btn btn-danger">remove</button>
+                                </form>
+                      
+                  
+                </div>             
+          </div>                  
+    </div>
+</section>
+
+
+    <%- include('../includes/_footer_nav') %> 
+</body>
+</html>

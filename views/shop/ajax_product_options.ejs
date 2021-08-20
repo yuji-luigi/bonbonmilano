@@ -1,0 +1,21 @@
+
+<div class="options-contents">
+    <span class="close">×</span>
+    <h2 class="item-option-main-title"><%= product.title %> </h2>
+    <img class="main-image" src="<%= product.mainimgurl %> ">
+    <h2>Scegli un Materiale</h2>
+     <div class="item-options">
+       <% product.variations.forEach(variation => { %> 
+        <div class="item-option">
+          <a href="/shop/details/<%= product.title %>/<%= variation._id %> ">
+            <img class="item-option-image" src="<%= variation.variimgurl %>" alt="">
+            <h4><%= variation.material %> </h4>
+          </a>
+        </div>
+        <% }) %> 
+          <div class="item-option">
+            <img class="item-option-image" src="../images/bonboniere5.jpg" alt="">
+            <h4>brillantini</h4>
+          </div>
+      </div>
+</div>

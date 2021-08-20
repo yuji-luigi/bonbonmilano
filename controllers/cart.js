@@ -206,6 +206,8 @@ const getLineItems = (items) => {
 
 exports.createCheckoutSession = async (req, res) => {
   const user = req.user
+  const hostLink = process.env.AUTH_LINK_HOST
+
   try{
     const cart = await findCart(user)
     const {items} = cart
@@ -214,8 +216,8 @@ exports.createCheckoutSession = async (req, res) => {
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: 'http://localhost:3000/cart/payment.success',
-      cancel_url: 'http://localhost:3000/cart/payment.cancel',
+      success_url: `${hostLink}/cart/payment.success`,
+      cancel_url: `${hostLink}/cart/payment.cancel`,
     });
     res.redirect(303, session.url);
   }catch(err) {console.log(err)}

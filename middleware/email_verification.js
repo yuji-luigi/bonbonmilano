@@ -6,6 +6,7 @@ const crypto = require('crypto')
 const sendVerifyEmail = async (req, res, next) => {
 try{
   const {username, email, cap, tel, via, citta, _id} = req.user
+  const authLinkHost = req.authLinkHost
   const authLink = req.authLink
   const msg = req.msg
   const email_header = req.email_header
@@ -37,7 +38,7 @@ try{
     <li>Company: ${cap}</li>
     <li>email: ${email}</li>
     <li>Phone: ${tel}</li>
-  <h1><a href="${authLink}/${params_token}/">Click here to authenticate your account</a></h1>
+  <h1><a href="${authLinkHost}${authLink}/${params_token}/">Click here to authenticate your account</a></h1>
   `
   
   let transporter = nodemailer.createTransport({

@@ -85,7 +85,8 @@ exports.setConfirmMail = async (req, res, next) => {
    const user = await User.findOne({email: req.body.email})
    req.user = user
    console.log(user)
-   req.authLink = 'http://localhost:3000/auth/email_confirmation'
+   req.authLinkHost = process.env.AUTH_LINK_HOST
+   req.authLink = '/auth/email_confirmation'
    req.msg = 'This is message.'
    req.email_header ='Verification email'
    next()
@@ -95,7 +96,8 @@ exports.setConfirMailToPurchase = async (req, res, next) => {
   const user = await User.findOne({email: req.body.email})
   req.user = user
   console.log(user)
-  req.authLink = 'http://localhost:3000/auth/email_confirmation/topurchase'
+  req.authLinkHost = process.env.AUTH_LINK_HOST
+  req.authLink = '/auth/email_confirmation/topurchase'
   req.msg = 'This is message.'
   req.email_header ='Verification email to process your shopping!!'
   next()

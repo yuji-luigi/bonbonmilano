@@ -6,7 +6,7 @@ exports.showShopPage = async (req, res) =>{
    const user = req.user
    const guest = req.guest
    res.render('shop/shop', {products, guest, user})
- }catch (e) {console.log(e)}
+ }catch(e) {console.log(e)}
 }
 
 exports.showOptions = async (req, res) => {

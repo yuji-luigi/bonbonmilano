@@ -45,8 +45,8 @@ try{
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-      user: 'yujitest777@gmail.com', // generated ethereal user
-      pass: proccess.env.EMAIL_PASS, // generated ethereal password
+      user: process.env.EMAIL_ADDRESS, // generated ethereal user
+      pass: process.env.EMAIL_PASS, // generated ethereal password
     },
     tls: {
       rejectUnauthorized: false

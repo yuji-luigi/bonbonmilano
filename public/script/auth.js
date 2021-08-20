@@ -38,7 +38,7 @@ if(btnSubmit){
     getPath()
     reqBody = getInputValues(INPUTELEMENTS)
     try{
-      const res =  await fetchReq(`http://localhost:3000/${reqPath}`, "POST", { "Content-Type": "application/json" }, reqBody)
+      const res =  await fetchReq( reqPath, "POST", { "Content-Type": "application/json" }, reqBody)
       data = await res.json()
       if(checkIfError(data) === true) return btnSubmit.disabled = false
       if( await isRegisterRoute() === true){
@@ -109,18 +109,18 @@ const clearInputError = (inputElement) => {
 const getPath = () => {
   // todo refactor here ) name variable loc.pathname => use switch
   if(window.location.pathname.includes('/cart/register/')) {
-    reqPath = `cart/register/${product_id}`
+    reqPath = `/cart/register/${product_id}`
     return
   }  
   if(window.location.pathname === '/auth/register'){
-    reqPath = 'auth/register'
+    reqPath = '/auth/register'
     return 
   }  
   if(window.location.pathname === '/auth/guest/register'){
-    reqPath = 'auth/guest/register'
+    reqPath = '/auth/guest/register'
     return 
   }  
-  reqPath = 'auth/login'
+  reqPath = '/auth/login'
   return
 }  
 

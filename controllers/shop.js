@@ -1,11 +1,12 @@
 const Product = require('../models/Product')
 
 exports.showShopPage = async (req, res) =>{
-  const productType = req.params.title
-  const products = await Product.find()
-  const user = req.user
-  const guest = req.guest
-  res.render('shop/shop', {products, guest, user})
+ try{
+   const products = await Product.find()
+   const user = req.user
+   const guest = req.guest
+   res.render('shop/shop', {products, guest, user})
+ }catch (e) {console.log(e)}
 }
 
 exports.showOptions = async (req, res) => {

@@ -140,10 +140,7 @@ a{
 
 .carousel-container {
     width: 300px;
-    margin: 10px;
-    
     margin: 15px;
-    
     position: relative;
     overflow: hidden;
 }

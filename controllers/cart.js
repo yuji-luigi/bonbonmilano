@@ -54,6 +54,7 @@ exports.showCart = async (req, res) => {
     cart = new Cart({items:[]})
    console.log(cart.items.length)
   }
+  console.log(cart)
   res.render('cart/cart', {user, cart })
 }
 

@@ -1,3 +1,8 @@
+/* I put 2 tokens in mail auth process, one is in cookie, the other is in
+   req.params. As a result clients can auth them only by the same device which has 
+   been used to register.
+   I should switch to one token auth. But here I leave it like this. */
+
 const nodemailer = require('nodemailer')
 const Token = require('../models/Token')
 const User = require('../models/User')
@@ -56,7 +61,7 @@ try{
   
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: '"Nodemailer contact 👻" <yujitest@test.com>', // sender address
+    from: '"" <yujitest@test.com>', // sender address
     to: email, // list of receivers
     subject: "Node contact request ✔", // Subject line
     text: "Hello world?", // plain text body

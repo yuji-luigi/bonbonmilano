@@ -25,11 +25,6 @@ try{
     const newUserData = userdata    
     const newUser = new User(newUserData)
     await newUser.save()
-    // logger has been removed
-    // i need to pass the req.user to logger in order to generate 2 tokens.
-    // but i also need to handle these with frontend fetchAPI
-    // that means i can't remove res.send(data)
-    // => see logger (anothe fetch request in frontend with req.body = email <= destructure this in backend and pass 2 cookies)
     const data = {via, tel, cap, username, citta, email}
     res.json(data)
 

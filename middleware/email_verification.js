@@ -1,4 +1,4 @@
-/* I put 2 tokens in mail auth process, one is in cookie, the other is in
+/* i put 2 tokens in mail auth process, one is in cookie, the other is in
    req.params. As a result clients can auth them only by the same device which has 
    been used to register.
    I should switch to one token auth. But here I leave it like this. */

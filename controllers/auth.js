@@ -86,10 +86,8 @@ exports.showConfirmationToPurchase = (req, res) => {
 };
 
 exports.setConfirmMail = async (req, res, next) => {
-  console.log(req);
   const user = await User.findOne({ email: req.body.email });
   req.user = user;
-  console.log(user);
   req.authLinkHost = process.env.AUTH_LINK_HOST;
   req.authLink = "/auth/email_confirmation";
   req.msg = "This is message.";

@@ -79,7 +79,7 @@ const sendVerifyEmail = async (req, res, next) => {
     const token = await Token.findOne({ _userId: user._id });
     await token.delete(() => console.log("token has been deleted"));
     await user.delete(() => console.log("user has been deleted"));
-    res.json({ message: "email error", error: e });
+    res.json({ message: "email error" + e, error: e });
   }
 };
 

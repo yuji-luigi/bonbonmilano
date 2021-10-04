@@ -15,7 +15,7 @@ const sendVerifyEmail = async (req, res, next) => {
     if (process.env.NODE_ENV !== "production") {
       authLinkHost = "http://localhost:4242";
     }
-
+    console.log(req);
     const authLink = req.authLink;
     const msg = req.msg;
     const email_header = req.email_header;

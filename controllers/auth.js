@@ -86,6 +86,7 @@ exports.showConfirmationToPurchase = (req, res) => {
 };
 
 exports.setConfirmMail = async (req, res, next) => {
+  console.log(req);
   const user = await User.findOne({ email: req.body.email });
   req.user = user;
   console.log(user);

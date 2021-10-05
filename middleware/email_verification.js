@@ -4,18 +4,32 @@
    I should switch to one token auth. But here I leave it like this. */
 
 const nodemailer = require("nodemailer");
+const google = require("googleapis");
+const CLIENT_ID =
+  "933856054869-6lpj1bacbj55oaffc08oouk758evqlel.apps.googleusercontent.com";
+const CLIENT_SECRET = "KlLk5Y8XCFUIHcSboVEfnfd4";
+const REDIRECT_URL = "https://developers.google.com/oauthplayground";
+const REFRESH_TOKEN =
+  "1//04EYq010frNVACgYIARAAGAQSNwF-L9IrqjMj5WgwJfF-3OVD3afgVd8a_OBTn9lSSWoHv4yqFsPwBVLjN8qa8ljU29IKoMcf1zA";
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REDIRECT_URL
+);
+oAuth2Client.sdetCredentials({ refreshToken: REFRESH_TOKEN });
+
 const Token = require("../models/Token");
 const User = require("../models/User");
 const crypto = require("crypto");
 
 const sendVerifyEmail = async (req, res, next) => {
   try {
+    const oAuthAceesToken = await oAuth2Client.getAccessToken();
     const { username, email, cap, tel, via, citta, _id } = req.user;
     let authLinkHost = req.authLinkHost;
     if (process.env.NODE_ENV !== "production") {
       authLinkHost = "http://localhost:4242";
     }
-    console.log(req);
     const authLink = req.authLink;
     const msg = req.msg;
     const email_header = req.email_header;
@@ -49,16 +63,26 @@ const sendVerifyEmail = async (req, res, next) => {
   `;
 
     let transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false, // true for 465, false for other ports
+      service: "gmail",
       auth: {
-        user: process.env.EMAIL_ADDRESS, // generated ethereal user
-        pass: process.env.EMAIL_PASS, // generated ethereal password
+        type: "OAuth2",
+        user: process.env.EMAIL_ADDRESS,
+        clientId: CLIENT_ID,
+        clientSecret: CLIENT_SECRET,
+        refreshToken: REFRESH_TOKEN,
+        accessToken,
       },
-      tls: {
-        rejectUnauthorized: false,
-      },
+
+      // host: "smtp.gmail.com",
+      // port: 587,
+      // secure: false, // true for 465, false for other ports
+      // auth: {
+      //   user: process.env.EMAIL_ADDRESS, // generated ethereal user
+      //   pass: process.env.EMAIL_PASS, // generated ethereal password
+      // },
+      // tls: {
+      //   rejectUnauthorized: false,
+      // },
     });
 
     // send mail with defined transport object

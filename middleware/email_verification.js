@@ -14,7 +14,21 @@ const oAuth2Client = new google.auth.OAuth2(
   CLIENT_SECRET,
   REDIRECT_URL
 );
-oAuth2Client.setCredentials({ refreshToken: REFRESH_TOKEN });
+
+const scopes = ["https://mail.google.com"];
+const url = oAuth2Client.generateAuthUrl({
+  access_type: "online",
+  scope: scopes,
+});
+
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+
+// oAuth2Client.on("tokens", (tokens) => {
+//   if (tokens.refresh_token) {
+//     console.log(`refresh token: ${tokens.refresh_token}`);
+//   }
+//   console.log(`access token: ${tokens.access_token}`);
+// });
 
 const Token = require("../models/Token");
 const User = require("../models/User");
@@ -22,9 +36,9 @@ const crypto = require("crypto");
 
 const sendVerifyEmail = async (req, res, next) => {
   try {
+    console.log(oAuth2Client);
     const oAuthAceesToken = await oAuth2Client.getAccessToken();
     const { username, email, cap, tel, via, citta, _id } = req.user;
-    console.log(req.user);
     let authLinkHost = req.authLinkHost;
     if (process.env.NODE_ENV !== "production") {
       authLinkHost = "http://localhost:4242";
@@ -98,10 +112,10 @@ const sendVerifyEmail = async (req, res, next) => {
     res.json("Email has been sent");
   } catch (e) {
     console.log(e);
-    // const user = await User.findOne({ email: req.user.email });
-    // const token = await Token.findOne({ _userId: user._id });
-    // await token.delete(() => console.log("token has been deleted"));
-    // await user.delete(() => console.log("user has been deleted"));
+    const user = await User.findOne({ email: req.user.email });
+    const token = await Token.findOne({ _userId: user._id });
+    await token.delete(() => console.log("token has been deleted"));
+    await user.delete(() => console.log("user has been deleted"));
     res.json({ message: "email error" + e });
   }
 };

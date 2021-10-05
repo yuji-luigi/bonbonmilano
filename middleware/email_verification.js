@@ -4,13 +4,11 @@
    I should switch to one token auth. But here I leave it like this. */
 
 const nodemailer = require("nodemailer");
-const { google, GoogleApis } = require("googleapis");
-const CLIENT_ID =
-  "933856054869-6lpj1bacbj55oaffc08oouk758evqlel.apps.googleusercontent.com";
-const CLIENT_SECRET = "KlLk5Y8XCFUIHcSboVEfnfd4";
+const { google } = require("googleapis");
+const CLIENT_ID = process.env.CLIENT_ID_OAUTH;
+const CLIENT_SECRET = process.env.CLIENT_SECRET_OAUTH;
 const REDIRECT_URL = "https://developers.google.com/oauthplayground";
-const REFRESH_TOKEN =
-  "1//04EYq010frNVACgYIARAAGAQSNwF-L9IrqjMj5WgwJfF-3OVD3afgVd8a_OBTn9lSSWoHv4yqFsPwBVLjN8qa8ljU29IKoMcf1zA";
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN_OAUTH;
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
@@ -26,6 +24,7 @@ const sendVerifyEmail = async (req, res, next) => {
   try {
     const oAuthAceesToken = await oAuth2Client.getAccessToken();
     const { username, email, cap, tel, via, citta, _id } = req.user;
+    console.log(req.user);
     let authLinkHost = req.authLinkHost;
     if (process.env.NODE_ENV !== "production") {
       authLinkHost = "http://localhost:4242";
@@ -70,7 +69,7 @@ const sendVerifyEmail = async (req, res, next) => {
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
         refreshToken: REFRESH_TOKEN,
-        accessToken,
+        accessToken: oAuthAceesToken,
       },
 
       // host: "smtp.gmail.com",
@@ -99,10 +98,10 @@ const sendVerifyEmail = async (req, res, next) => {
     res.json("Email has been sent");
   } catch (e) {
     console.log(e);
-    const user = await User.findOne({ email: req.user.email });
-    const token = await Token.findOne({ _userId: user._id });
-    await token.delete(() => console.log("token has been deleted"));
-    await user.delete(() => console.log("user has been deleted"));
+    // const user = await User.findOne({ email: req.user.email });
+    // const token = await Token.findOne({ _userId: user._id });
+    // await token.delete(() => console.log("token has been deleted"));
+    // await user.delete(() => console.log("user has been deleted"));
     res.json({ message: "email error" + e });
   }
 };

@@ -4,7 +4,7 @@
    I should switch to one token auth. But here I leave it like this. */
 
 const nodemailer = require("nodemailer");
-const google = require("googleapis");
+const { google, GoogleApis } = require("googleapis");
 const CLIENT_ID =
   "933856054869-6lpj1bacbj55oaffc08oouk758evqlel.apps.googleusercontent.com";
 const CLIENT_SECRET = "KlLk5Y8XCFUIHcSboVEfnfd4";
@@ -16,7 +16,7 @@ const oAuth2Client = new google.auth.OAuth2(
   CLIENT_SECRET,
   REDIRECT_URL
 );
-oAuth2Client.sdetCredentials({ refreshToken: REFRESH_TOKEN });
+oAuth2Client.setCredentials({ refreshToken: REFRESH_TOKEN });
 
 const Token = require("../models/Token");
 const User = require("../models/User");
